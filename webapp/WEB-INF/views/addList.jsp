@@ -37,7 +37,7 @@
 					href="http://localhost:8088/guestbook3/deleteform?no=${vo.no}">삭제</a></td>
 			</tr>
 			<tr>
-				<td colspan="4">${vo.content}</td>
+				<td colspan="4"><pre><c:out value="${vo.content}" /></pre></td>
 			</tr>
 		</table>
 		<br>
