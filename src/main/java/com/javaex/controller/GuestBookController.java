@@ -4,10 +4,9 @@ import java.util.List;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestAttribute;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import com.javaex.dao.GuestBookDao;
 import com.javaex.vo.GuestBookVo;
@@ -27,7 +26,7 @@ public class GuestBookController {
 	}
 
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
-	public String add(@RequestAttribute GuestBookVo vo) {
+	public String add(@ModelAttribute GuestBookVo vo) {
 		System.out.println("add");
 
 		GuestBookDao dao = new GuestBookDao();
@@ -37,7 +36,7 @@ public class GuestBookController {
 	}
 
 	@RequestMapping(value = "/delete", method = RequestMethod.POST)
-	public String delete(@RequestAttribute GuestBookVo vo) {
+	public String delete(@ModelAttribute GuestBookVo vo) {
 		System.out.println("delete");
 
 		GuestBookDao dao = new GuestBookDao();
