@@ -2,6 +2,7 @@ package com.javaex.controller;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -14,11 +15,13 @@ import com.javaex.vo.GuestBookVo;
 @Controller
 public class GuestBookController {
 
+	@Autowired
+	private GuestBookDao dao;
+
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	public String list(Model model) {
 		System.out.println("list");
 
-		GuestBookDao dao = new GuestBookDao();
 		List<GuestBookVo> list = dao.getList();
 
 		model.addAttribute("list", list);
@@ -29,7 +32,6 @@ public class GuestBookController {
 	public String add(@ModelAttribute GuestBookVo vo) {
 		System.out.println("add");
 
-		GuestBookDao dao = new GuestBookDao();
 		dao.insert(vo);
 
 		return "redirect:/list";
@@ -39,7 +41,6 @@ public class GuestBookController {
 	public String delete(@ModelAttribute GuestBookVo vo) {
 		System.out.println("delete");
 
-		GuestBookDao dao = new GuestBookDao();
 		dao.delete(vo);
 
 		return "redirect:/list";
